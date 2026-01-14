@@ -71,7 +71,7 @@ if (userCount.count === 0) {
     },
   ];
 
-  const insertManyUsers = db.transaction((users) => {
+  const insertManyUsers = db.transaction((users: Omit<User, 'id'>[]) => {
     for (const user of users) {
       insertUser.run(
         user.name,
@@ -141,7 +141,7 @@ if (orderCount.count === 0) {
     },
   ];
 
-  const insertManyOrders = db.transaction((orders) => {
+  const insertManyOrders = db.transaction((orders: Order[]) => {
     for (const order of orders) {
       insertOrder.run(
         order.id,
